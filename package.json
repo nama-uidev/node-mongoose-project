@@ -4,7 +4,8 @@
   "description": "node-mongoose-project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec 'npm test'"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,11 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.8.3"
+  },
+  "devDependencies": {
+    "expect": "^24.9.0",
+    "mocha": "^6.2.2",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

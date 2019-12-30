@@ -1,13 +1,13 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-const mongoose = require("./server/db/mongoose");
+const mongoose = require("./db/mongoose");
 const {
     User
-} = require("./server/models/user-model");
+} = require("./models/user-model");
 const {
     Todo
-} = require("./server/models/Todo-model");
+} = require("./models/Todo-model");
 
 var app = express();
 
@@ -28,3 +28,7 @@ app.post("/todos", (req, res) => {
 app.listen(3000, () => {
     console.log("Started the app");
 });
+
+module.exports = {
+    app
+};
