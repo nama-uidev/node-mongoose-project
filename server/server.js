@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 
 const mongoose = require("./db/mongoose");
 const {
-    User
+    user
 } = require("./models/user-model");
 const {
     Todo
@@ -13,16 +13,23 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.post("/todos", (req, res) => {
-    var TodoObj = new Todo({
-        text: req.body.text
-    });
-    TodoObj.save().then((doc) => {
-        console.log("Record saved succesfully");
-        console.log(doc);
+app.get("/todos", (req, res) => {
+    user.find().then((users) => {
+        res.send({
+            users
+        });
     }, (err) => {
-        console.log("Record not saved succesfully");
-    });
+        res.status(400).send(e);
+    })
+});
+
+app.get("/todos/:todoId", (req, res) => {
+    //res.send(req.params);
+    Todo.find({
+        _id: req.params.todoId
+    }).then((todos) => {
+        console.log(todos);
+    })
 });
 
 app.listen(3000, () => {
